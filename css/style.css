@@ -6,9 +6,9 @@
     box-sizing: border-box;
 }
 body{
-   background-color: black;
+   background-color: white;
     display:grid;
-    grid-template-columns: 1fr 1.8fr 1fr;
+    grid-template-columns: 1fr 1.5fr 1fr;
     color: var(--color3);
     font-family: "Mukta", sans-serif;
     height: 100vh;
@@ -55,7 +55,8 @@ body{
     height: 23svh;
 }
 .title h1{
-    font-size: 3.5svh;
+    font-weight: bold;
+    font-size: 4svh;
     color: var(--color3);
     margin-top: 0.3em;
 }
@@ -152,9 +153,9 @@ body{
 .main__frame{
     display: flex;
     align-items: center;
-    height: 80svh;
+    height: 80vh;
 }
-/* you may like this section  */
+
 .likeSection{
     display: flex;
     flex-direction: column;
@@ -188,7 +189,7 @@ body{
 .mayLikeSongs:hover{  
         background-color: #242424;
 }
-.descritionMayLike{
+.descriptionMayLike{
     overflow: hidden;
 }
 .likeGallery{
@@ -201,4 +202,163 @@ body{
 }
 .album__mayLikeSongs :nth-child(3){
     margin-left: 3rem;
+}
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color2);
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+    height: 98svh;
+    justify-content: space-between;
+}
+
+.main__heading{
+    display: flex;
+    height: 5svh;
+    align-items: center;
+    font-size: 2svh;
+    margin-top: 2svh;
+}
+.album__mainSearch{
+    display: flex;
+    align-items: center;
+    height: 5svh;
+    margin-bottom: 1.2svh;
+}
+.album__mainSearch i{
+    font-size: x-large;
+}
+.album__mainSearch input[type="text"]{
+    flex: 1; 
+    border: none;
+    background-color:transparent; 
+    color: #fff; 
+    font-size: 18px; 
+    outline: none;
+    margin-left: 0.5em;
+}
+.album__mainSearch button {
+    padding: 10px 20px;
+    background-color:#242424; 
+    color: #fff; 
+    border: none; 
+    border-radius: 0 50px 50px 0; 
+    cursor: pointer;
+}
+.album__mainSearch button:hover {
+    background-color: #fff;
+    color: black;
+    transition: 0.5s;
+}
+.track{
+    display: flex;
+    flex-direction: column; 
+    margin: 0.5rem;
+    padding: 0.5rem;
+    gap: 2rem;
+    border-radius: 1rem;
+    height: 98svh;
+    background-color: var(--color2);
+}
+.track__heading{
+    padding-top: 1.5rem;
+    padding-left: 2rem;
+}
+.track__heading h3{
+    font-size: 2.1rem;
+}
+.track__heading h5{
+    padding-top: 2rem;
+}
+
+.track__songsName{
+    display: flex;
+    align-items: center;
+    gap: 1rem;  
+}
+.track__playingNext{
+    padding-left: 2rem;
+    font-size: large;
+
+}
+.track__search{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-left: 2rem;
+    width: auto;
+}
+.track__search i{
+    font-size: x-large;
+}
+.track__search input[type="text"]{
+    flex: 1; 
+    border: none;
+    background-color:transparent; 
+    color: #fff; 
+    font-size: 18px; 
+    outline: none; 
+}
+.track__search button {
+    padding: 10px 20px;
+    background-color:#242424; 
+    color: #fff; 
+    border: none; 
+    border-radius: 0 50px 50px 0; 
+    cursor: pointer;
+}
+.track__search button:hover {
+    background-color: #fff;
+    color: black;
+    transition: 0.5s;
+}
+.track__songs{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 75vh;
+    gap: 1rem;
+    padding-left: 2rem;
+}
+.track__description{
+    display: flex;
+}
+
+.track__description :nth-child(2){
+    color:rgba(255, 255, 255, 0.479)
+}
+
+.track__time{
+    display: flex;
+    flex-direction: column;
+   margin-left: 3rem;
+   margin-right: 2em;
+}
+.track__hora{
+    font-size: small;
+}
+.track__año{
+    align-self: center;
+    font-size: smaller;
+}
+.track__songsName{
+    border-radius: 1rem;
+    transition: padding 0.3s ease;
+    width: 98%;
+}
+.track__songsName:hover{
+    background-color: #242424;
+    padding: 0.4rem;
+    cursor: pointer;
+}
+.track__songsName img{
+    width: 68px;
+    border-radius: 0.8rem;
+}
+img:hover{
+    cursor: pointer;
 }
