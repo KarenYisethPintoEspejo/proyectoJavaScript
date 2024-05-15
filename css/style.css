@@ -172,6 +172,7 @@ body{
     display: flex;
     justify-content: flex-start;
     padding-top: 1rem;
+    padding-bottom: 1.2rem;
 }
 
 .mayLikeSongs img{
@@ -196,7 +197,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    height: 13svh;   
+    height: 15svh;   
     margin-bottom: 1rem;
     overflow-y: scroll; 
 }
