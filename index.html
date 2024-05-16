@@ -8,10 +8,15 @@
     <link rel="icon" type="image/png" href="storage/img/spotify.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="./js/main.js" type="module" defer></script>
+    <script src="./js/search.js" ></script>
+    
     <title>Spotify</title>
 </head>
 <body>
-    <aside class="album">
+
+   
+    
+    <aside class="album column" id = "columna">
         <header class= "title">
             <h1>Discover<br> New Music</h1>
             <div class = "search__album">
@@ -48,17 +53,19 @@
 
 
     <main>
-        <heading class="main__heading">
+        <heading class="main__heading column" id="columna">
             <h3>Now playing</h3>
         </heading>
         <my-frame class= "main__frame"uri="spotify:album:2CMlkzFI2oDAy5MbyV7OV5"></my-frame>
+        
     </main>
+   
 
 
 
 
    <!-- SECTION DERECHA TRACK -->
-   <section class="track">
+   <section class="track column" id="columna">
         <div class="track__heading">
             <h3>Track List</h3>
         </div>
@@ -72,8 +79,27 @@
     </div>
     <div class= "pistas__totales">
                 
-               
+
     </div>
-</section>
+    </section>
+
+  
+        <nav class="menu">
+            <button onclick="mostrarColumna(1)">
+                <i class='bx bx-search-alt'></i>
+               
+            </button>
+            <button onclick="mostrarColumna(2)">
+                <i class='bx bx-home' ></i>
+    
+            </button>
+            <button onclick="mostrarColumna(3)">
+                <i class="bx bx-grid-alt"></i>
+    
+            </button>
+    
+        </nav>
+
+    
 </body>
 </html> 
