@@ -16,12 +16,12 @@
 
    
     
-    <aside class="album column" id = "columna1">
+    <aside class="album_column" id = "columna1">
         <header class= "title">
             <h1>Discover<br> New Music</h1>
             <div class = "search__album">
                 <i class='bx bx-search-alt-2'></i>
-                <input type="text" placeholder="What album do you want to search for?">
+                <input type="text" placeholder="What do you want to play?">
                 <button type="submit">Search</button>
             </div>  
         </header>
@@ -41,7 +41,13 @@
             <div class= "likeGallery">
                 <may-like>
                     <div class="iframe-wrapper"> 
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4xqrdfXkTW4T0RauPLv3WA" width="95%" height="151px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4xqrdfXkTW4T0RauPLv3WA" width="95%" height="155px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                    <div class="iframe-wrapper"> 
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/35LdDKNMwvKftENaj1WIwF" width="95%" height="155px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                    <div class="iframe-wrapper"> 
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/28UP90XhjCovLtieduYr9P" width="95%" height="155px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
                 </may-like>
             </div> 
@@ -53,22 +59,26 @@
         <heading class="main__heading">
             <h3>Now playing</h3>
         </heading>
-        <my-frame class= "main__frame"uri="spotify:album:2CMlkzFI2oDAy5MbyV7OV5"></my-frame>
+        <div class="iframe-con">
+
+            <my-frame class= "main__frame"uri="spotify:album:2CMlkzFI2oDAy5MbyV7OV5" ></my-frame>
+        </div>
         
     </main>
+    
    
 
 
 
 
    <!-- SECTION DERECHA TRACK -->
-   <section class="track column" id="columna3">
+   <section class="track_column" id="columna3">
         <div class="track__heading">
             <h3>Track List</h3>
         </div>
         <div class="track__search">
             <i class='bx bx-search-alt-2'></i>
-        <input type="text" placeholder="What song do you want to search for?">
+        <input type="text" placeholder="What do you want to play?">
         <button type="submit">Search</button>
         </div>
     
@@ -81,15 +91,25 @@
   
         <nav class="menu">
             <button onclick="mostrarColumna(1)">
-                <i class='bx bx-search-alt'></i>
+
+                <a href="#columna1">
+
+                    <i class='bx bx-search-alt'></i>
+                </a>
                
             </button>
             <button onclick="mostrarColumna(2)">
-                <i class='bx bx-home' ></i>
+                <a href="#columna2">
+
+                    <i class='bx bx-home' ></i>
+                </a>
     
             </button>
             <button onclick="mostrarColumna(3)">
-                <i class="bx bx-grid-alt"></i>
+                <a href="#columna3">
+
+                    <i class="bx bx-grid-alt"></i>
+                </a>
     
             </button>
     

@@ -6,7 +6,7 @@ export const getAllListTracks = async (query) => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '9acfc943dfmsh2dbdbbe8c4bf3c8p120f44jsn0578b09a8f6b',
+            'X-RapidAPI-Key': '0be03cf9femshc7b5238a1b6cbc7p13870ajsnde453bc0d701',
             'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
     };
