@@ -542,6 +542,16 @@ img:hover{
         margin-bottom: -45px;
     }
 
+    .pistas__totales{
+        /* border: 1px solid red; */
+        width: 93%;
+        margin-bottom: 1rem;
+        margin-left: 0.8rem;
+        margin-right: 0.8rem;
+    }
+    .pistas__totales .iframe-wrapper{
+        margin-top: 0.5rem;
+    }
   
 }
 
