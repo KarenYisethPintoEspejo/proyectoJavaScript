@@ -372,7 +372,17 @@ img:hover{
 
 .spotify-iframe{
     width: 100%;
+
 }
+
+.pistas__totales{
+    overflow: scroll;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    margin-left: 5px;
+}
+
+
 
 @media  (max-width: 800px) {
     body{
@@ -386,13 +396,18 @@ img:hover{
 
     iframe{
         box-sizing: border-box;
+        
+
     }
     
     .main__frame{
         display: flex;
-        height: 80%;
-        width: 90%;
+        /* height: -20%; */
+        width: 85%;
         align-items: self-end;
+        margin-bottom: 10%;
+        margin-top: 10%;
+
     }
 
     .track.column{
@@ -523,7 +538,9 @@ img:hover{
         color: #00aa2b; 
     }
 
-
+    .column{
+        margin-bottom: -45px;
+    }
 
   
 }
