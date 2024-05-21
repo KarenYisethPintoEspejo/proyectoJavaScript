@@ -14,22 +14,10 @@ class myframe extends HTMLElement {
         if (uri) {
             // Obtener el ID del álbum de la URI
             const id = uri.split(':')[2];
-            const typeOf = uri.split(':')[1];
-            if(typeOf == "album" && window.innerWidth <= 800){
-                this.shadowRoot.innerHTML = `
-                    <iframe class="spotify-iframe" width="700" height="600" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                `;
-            }
-            else if(typeOf == "album"){
-                this.shadowRoot.innerHTML = `
-                    <iframe class="spotify-iframe" width="600" height="770" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                `;
-            }
-            else if(typeOf == "track"){
-                this.shadowRoot.innerHTML = `
-                    <iframe class="spotify-iframe" width="100%" height="400" src="https://open.spotify.com/embed/${typeOf}/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                `;
-            }
+            this.shadowRoot.innerHTML = `
+                <link rel="stylesheet" href="css/style.css">
+                <iframe class="spotify-iframe" width="auto" height="800" src="https://open.spotify.com/embed/album/${id}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            `;
         } else {
             this.shadowRoot.innerHTML = '';
         }
@@ -46,7 +34,7 @@ class myframe extends HTMLElement {
     }
 }
 customElements.define("my-frame",myframe)
-customElements.define("my-frame",myframe)
+
 
 class albumGallery extends HTMLElement {
     constructor() {
@@ -55,9 +43,8 @@ class albumGallery extends HTMLElement {
     
     async connectedCallback() {
         const searchInput = document.querySelector('.search__album input');
-        const searchButton = document.querySelector('.search__album button');
 
-        const searchAlbums = async () => {
+        document.querySelector('.search__album button').addEventListener('click', async () => {
             const searchTerm = searchInput.value.trim();
             const url = `https://spotify23.p.rapidapi.com/search/?q=${searchTerm}&type=albums&offset=0&limit=8`;
 
@@ -67,15 +54,6 @@ class albumGallery extends HTMLElement {
                 updateAlbumGallery(result.albums.items);
             } catch (error) {
                 console.error(error);
-            }
-        };
-
-        searchButton.addEventListener('click', searchAlbums);
-
-        searchInput.addEventListener('keydown', async (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                searchAlbums();
             }
         });
 
@@ -114,6 +92,7 @@ class albumGallery extends HTMLElement {
             const response = await fetch(url, options);
             const result = await response.json();
             let templates = '';
+            console.log("data", result);
             for (let i = 0; i < Math.min(8, result.albums.items.length); i++) {
                 if (result.albums.items[i].data && result.albums.items[i].data.coverArt && result.albums.items[i].data.coverArt.sources && result.albums.items[i].data.coverArt.sources.length > 0) {
                     const primeraUrl = result.albums.items[i].data.coverArt.sources[0].url;
@@ -142,38 +121,42 @@ customElements.define('album-gallery', albumGallery);
 
 
 
-
 let cancionesContainer = document.querySelector(".pistas__totales");
 
 // import {getAllTopChart} from  "./modules/now-playing.js"
 import {getAllListTracks} from "./components/getAllTracks.js"
 
-let buscador = document.querySelectorAll("input");
+let buscador = document.querySelectorAll ("input")
 
 buscador[1].addEventListener("keyup", async function(event) {
-    if (event.key === "Enter") {
-        cancionesContainer.innerHTML = "";
-        const query = event.target.value.trim(); 
-        if (query) {
-            try {
-                const playlists = await getAllListTracks(query);
-                for (let playlist of playlists) {
-
-                    if (playlist.includes(":")) {
-                        let idAlbum = playlist.split(":")[2];
-                        cancionesContainer.innerHTML += `
-                            <div class="iframe-wrapper2">
-                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/${idAlbum}" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                            </div>
-                        `;
-                    } else {
-                        console.error(`Formato inesperado de playlist: ${playlist}`);
-                    }
-                }
-                console.log(playlists);
-            } catch (error) {
-                console.error('Error al obtener las pistas:', error);
-            }
+    if (event.key == "Enter") {
+        cancionesContainer.innerHTML="";
+        const query = event.target.value; // Obtener el valor del campo de búsqueda
+        const playlists = await getAllListTracks(query);
+        for (let playlist of playlists){
+             let idAlbum = playlist.split(":")[2];
+            cancionesContainer.innerHTML+= `
+            <div class="iframe-wrapper"> 
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/${idAlbum}" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+            `;
         }
+        console.log(playlists);
     }
 });
+
+window.onresize = manageResize
+
+function manageResize(){
+    if (window.innerWidth < 900) {
+        console.log("VERISON MOVIL");
+    }
+    else{
+        console.log("VERION DESKTOP");
+       
+    }
+}
+
+
+
+

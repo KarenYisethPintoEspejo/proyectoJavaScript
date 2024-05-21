@@ -33,7 +33,7 @@ body{
     background-color: #888;
     border-radius: 5px;
 }
-.album_column{
+.album{
     display: flex;
     flex-direction: column;
     height: 100svh;
@@ -102,23 +102,22 @@ body{
     padding: 2rem;
     border-radius: 1rem;
     color: var(--color3);
-    height: 55svh;
+    height: 57svh;
 }
 .albumGallery img:hover{
-    width: 47%;
+    width: 50%;
 }
 .albumGallery :nth-child(3){
     color: rgba(255, 255, 255, 0.521)
     
 }
 .albumGallery img{
-    width: 200px;
+    width: 150px;
     transition: width 0.3s ease;
     border-radius: 1rem;
 }
 .sectionAlbum2{
     display: flex;
-    margin-bottom: -4rem;
     flex-direction: row;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -143,20 +142,20 @@ body{
     width: 100%;
     overflow-y: scroll; 
     height: auto;
-    margin-top: 5rem;
+    margin-top: 1em;
     
 }
 
 .albumGallery img {
     border-radius: 1em;
-    width: 40%; 
+    width: 37%; 
     height: auto; 
     margin: 0.5em;
 }
 .main__frame{
     display: flex;
-    align-items: center;
-    height: 100vh;
+    height: 80%;
+    width: 90%;
 }
 
 .likeSection{
@@ -166,8 +165,7 @@ body{
     background-color: var(--color2);
     border-radius: 1rem;
     color: var(--color3);
-    height: 25svh;
-    /* margin-bottom: 0.35rem; */
+    height: 18svh;
 }
 .likeName :nth-child(2){
     color:rgba(255, 255, 255, 0.479)
@@ -176,7 +174,7 @@ body{
     display: flex;
     justify-content: flex-start;
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1.2rem;
 }
 
 .mayLikeSongs img{
@@ -197,16 +195,6 @@ body{
 .descriptionMayLike{
     overflow: hidden;
 }
-
-.iframe-wrapper{
-    margin-bottom: 1rem;
-}
-
-
-.iframe-wrapper2{
-    margin-bottom: 1rem;
-}
-
 .likeGallery{
     display: flex;
     flex-direction: column;
@@ -228,7 +216,7 @@ main{
     border-radius: 1rem;
     margin: 0.5rem 0;
     height: 98svh;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .main__heading{
@@ -236,9 +224,7 @@ main{
     height: 5svh;
     align-items: center;
     font-size: 2svh;
-    margin-top: 4svh;
-    margin-bottom: -3rem;
-
+    margin-top: 2svh;
 }
 .album__mainSearch{
     display: flex;
@@ -272,7 +258,7 @@ main{
     color: black;
     transition: 0.5s;
 }
-.track_column{
+.track{
     display: flex;
     flex-direction: column; 
     margin: 0.5rem;
@@ -309,7 +295,6 @@ main{
     align-items: center;
     padding-left: 1rem;
     width: auto;
-    margin-bottom: -2rem;
 }
 .track__search i{
     font-size: x-large;
@@ -322,11 +307,6 @@ main{
     font-size: 18px; 
     outline: none; 
 }
-.pistas__totales{
-    overflow: scroll;
-    margin: 1rem;
-}
-
 .track__search button {
     padding: 10px 20px;
     background-color:#242424; 
@@ -390,18 +370,12 @@ img:hover{
     display: none;
 }
 
+.spotify-iframe{
+    width: 100%;
+}
 
 @media  (max-width: 800px) {
-    html{
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-    }
     body{
-        width: 100%;
-        height: 100vh;
-
-      
         grid-template-columns:1fr ;
         grid-template-rows: 1fr;
         overflow-y: scroll;
@@ -409,8 +383,23 @@ img:hover{
         
 
     }
-  
-    .album_column{
+
+    iframe{
+        box-sizing: border-box;
+    }
+    
+    .main__frame{
+        display: flex;
+        height: 80%;
+        width: 90%;
+        align-items: self-end;
+    }
+
+    .track.column{
+        overflow-y: auto;
+    }
+
+    .album{
         display: flex;
         flex-direction: column;
         height: 92svh;
@@ -423,7 +412,7 @@ img:hover{
         display: flex;
         flex-direction: column; 
         background-color: var(--color2);
-        padding: 1rem;
+        padding: 2rem;
         border-radius: 1rem;
         color: var(--color3);
         height: 45%;
@@ -458,7 +447,7 @@ img:hover{
         justify-content: space-between;
     }
    
-    .track_column{
+    .track{
         display: none;
         flex-direction: column;
         
@@ -467,8 +456,8 @@ img:hover{
         border-radius: 1rem;
         margin: 0.5rem;
         padding: 0rem;
-        height: 88.5svh;
-        width: 95vw;
+        height: 90svh;
+        width: 97vw;
      
       
         /* margin: 0.5rem 0; */
@@ -533,30 +522,11 @@ img:hover{
     .menu i:hover {
         color: #00aa2b; 
     }
+
+
+
   
-    
-    .column{
-        padding: 2px;
-    display: flex;
-    width: 430%;
-    height: 90%;
-    border: 2px solid red;
 }
-    .main__frame{
-        width: 5px;
-        margin-bottom: 400px;
-        margin-left: -150px;
-    }
-
-}
-
-
-
-
-
-
-
-
 
 
 
