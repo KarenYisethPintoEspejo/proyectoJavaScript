@@ -105,7 +105,7 @@ body{
     height: 57svh;
 }
 .albumGallery img:hover{
-    width: 50%;
+    width: 45%;
 }
 .albumGallery :nth-child(3){
     color: rgba(255, 255, 255, 0.521)
@@ -148,7 +148,7 @@ body{
 
 .albumGallery img {
     border-radius: 1em;
-    width: 37%; 
+    width: 43%; 
     height: auto; 
     margin: 0.5em;
 }

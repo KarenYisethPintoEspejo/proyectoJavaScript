@@ -35,16 +35,23 @@ class myframe extends HTMLElement {
 }
 customElements.define("my-frame",myframe)
 
-
 class albumGallery extends HTMLElement {
     constructor() {
         super();
     }
-    
+
     async connectedCallback() {
         const searchInput = document.querySelector('.search__album input');
+        const searchButton = document.querySelector('.search__album button');
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '0be03cf9femshc7b5238a1b6cbc7p13870ajsnde453bc0d701',
+                'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+            }
+        };
 
-        document.querySelector('.search__album button').addEventListener('click', async () => {
+        const searchAlbums = async () => {
             const searchTerm = searchInput.value.trim();
             const url = `https://spotify23.p.rapidapi.com/search/?q=${searchTerm}&type=albums&offset=0&limit=8`;
 
@@ -55,9 +62,17 @@ class albumGallery extends HTMLElement {
             } catch (error) {
                 console.error(error);
             }
+        };
+
+        searchButton.addEventListener('click', searchAlbums);
+
+        searchInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                searchAlbums();
+            }
         });
 
-        function updateAlbumGallery(albums) {
+        const updateAlbumGallery = (albums) => {
             let templates = '';
             for (let i = 0; i < Math.min(8, albums.length); i++) {
                 if (albums[i].data && albums[i].data.coverArt && albums[i].data.coverArt.sources && albums[i].data.coverArt.sources.length > 0) {
@@ -77,40 +92,14 @@ class albumGallery extends HTMLElement {
                     myFrame.setAttribute('uri', `spotify:album:${id}`);
                 });
             });
-        }
-        
+        };
+
         const url = 'https://spotify23.p.rapidapi.com/search/?q=morat%20&type=albums&offset=0&limit=8';
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '0be03cf9femshc7b5238a1b6cbc7p13870ajsnde453bc0d701',
-                'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-            }
-        };  
 
         try {
             const response = await fetch(url, options);
             const result = await response.json();
-            let templates = '';
-            console.log("data", result);
-            for (let i = 0; i < Math.min(8, result.albums.items.length); i++) {
-                if (result.albums.items[i].data && result.albums.items[i].data.coverArt && result.albums.items[i].data.coverArt.sources && result.albums.items[i].data.coverArt.sources.length > 0) {
-                    const primeraUrl = result.albums.items[i].data.coverArt.sources[0].url;
-                    const uri = result.albums.items[i].data.uri;
-                    const id = uri.split(':')[2];
-                    templates += `
-                        <img id="album__${i + 1}" src="${primeraUrl}" alt="" data-id="${id}">
-                    `;
-                }
-            }
-            this.innerHTML = templates;
-            this.querySelectorAll('img').forEach(img => {
-                img.addEventListener('click', () => {
-                    const id = img.dataset.id;
-                    const myFrame = document.querySelector('.main__frame');
-                    myFrame.setAttribute('uri', `spotify:album:${id}`);
-                });
-            });
+            updateAlbumGallery(result.albums.items);
         } catch (error) {
             console.error(error);
         }
@@ -118,6 +107,7 @@ class albumGallery extends HTMLElement {
 }
 
 customElements.define('album-gallery', albumGallery);
+
 
 
 
